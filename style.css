@@ -47,7 +47,7 @@ a {
   font-size: 12px;
   line-height: 24px;
   font-family: 'helvetica', 'arial', 'sans';
-  padding: 20px 20px 20px 30px;
+  padding: 20px 20px 20px 10px;
   width: 250px;
   height: 350px;
   overflow: hidden;
@@ -59,6 +59,16 @@ a {
 .assignment a {
     color: #000;
     text-decoration: none;
+}
+
+.assignment img{
+  border-radius: 10px;
+  object-fit: cover;
+  aspect-ratio: 1;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
 }
 
 .assignment a:hover {
