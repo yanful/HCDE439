@@ -9,6 +9,9 @@ h1,h2,h3,h4 {
   font-family: 'helvetica', 'arial', 'sans';
   }
 
+p{
+  font-size: 25px;
+}
 
 a {
   color: #000;
@@ -18,12 +21,27 @@ a {
   background: #fff;
   color: #000;
   height: auto;
-  padding: 30px 30px 30px;
+  padding: 20px 10px 30px;
 }
 
 .header h1 {
-  font-size: 50px;
-  }
+  font-size: 45px;
+  text-align: center;
+}
+
+.header h1 span{
+  color: rgb(255, 0, 0);
+}
+
+.image{
+  border-radius: 10px;
+  object-fit: cover;
+  aspect-ratio: 1;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+}
 
 .assignment {
   font-size: 12px;
@@ -69,3 +87,45 @@ a {
   text-decoration: none;
 }
 
+.page-container {
+  padding: 10px 10%;
+}
+
+nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo{
+  width: 140px;
+}
+
+nav ul li{
+  display: inline-block;
+  list-style: none;
+  margin: 10px 20px;
+}
+
+nav ul li a{
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 18px;
+  position: relative;
+}
+
+nav ul li a::after{
+  content: '';
+  width: 0;
+  height: 3px;
+  background: #ff004f;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  transition: 0.5s;
+}
+
+nav ul li a:hover::after{
+  width: 100%;
+}
