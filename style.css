@@ -11,6 +11,7 @@ h1,h2,h3,h4 {
 
 p{
   font-size: 25px;
+  font-family:'Times New Roman', Times, serif;
 }
 
 a {
@@ -66,9 +67,23 @@ a {
   object-fit: cover;
   aspect-ratio: 1;
   display: block;
-  margin-left: auto;
+  margin-left: 0px;
   margin-right: auto;
   width: 200px;
+}
+
+.header img{
+  border-radius: 10px;
+  object-fit: cover;
+  aspect-ratio: 1;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+}
+.cal{
+  text-align: center;
+  font-size: 20px;
 }
 
 .assignment a:hover {

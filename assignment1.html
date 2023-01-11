@@ -12,14 +12,86 @@
     <body> 
 
         <div class="header">
-            <h1>Example Student's Assignment 1!</h1>
+            <nav style="padding: 10px 5%;">
+                <ul>
+                  <li><a href="index.html" style="font-size: 30px; font-weight:bold;">Back</a></li>
+                </ul>
+            </nav>
+            <h1>Assignment 1 - LED blink</h1>
             <p>
-            <img src="red-panda.jpg" width=400></a>
+            <img src="Blink.gif" width=400 style="aspect-ratio: 0.8;"></a>
+            </p>
+            <p style="padding: 10px 10%; font-size: 35px;">
+                Process:
+            </p>
+            <p style="padding: 10px 10%;">
+            I decide to use the red, yellow, green resistors (with 1.8V drop). 
+                <div class="cal">
+                    V = I * R <br>
+                    5V - 1.8V = 20mA * R <br>
+                    3.2V = 0.02A * R <br>
+                    R = 160Ω <br>
+                </div>
+            </p>
+            <p style="padding: 10px 10%;">
+            The minimum voltage requirement is 1.8V, 3.2V > 1.8V. So it's working. <br>
+            We need to find 3 resistors that close to 160Ω <br>
+            <br>
+            What if we choose 100Ω:
+            <div class="cal">
+                3.2V = I * 100Ω <br>
+                I = 0.032A <br>
+                I = 32mA<br>
+            </div>
+            <p style="padding: 10px 10%;">
+                The maximum current requirement is 30mA, 32mA > 30mA. So it's not working. <br>
+                Therefore, I decide to use the <span style="color: crimson;">220Ω </span>resistors<br>
+                <br>
             </p>
             <p>
-            Here is all the documentation for assignment 1!
+                <img src="assignment 1 image/IMG_2322.JPG" width=400 style="aspect-ratio: 1.2;"></a>
             </p>
-        </div>
-        
+            <p style="padding: 10px 10%; font-size: 35px;">
+                Code:
+            </p>
+            <p style="padding: 10px 10%;">
+                Start to blink from <span style="color: crimson;">red</span> LED <br>
+                First, turn the <span style="color: crimson;">red</span> LED on, wait 5 s, and turn off<br>
+                Second, turn both <span style="color: crimson;">red</span> and <span style="color: rgb(126, 146, 0);">yellow</span> LED on, wait 3 s, and turn off<br>
+                Third, turn both <span style="color: rgb(126, 146, 0);">yellow</span> and <span style="color: rgb(0, 177, 59);">green</span> LED on, wait 1 s, and turn off<br>
+                loop these steps
+                <br>
+            </p>
+            <pre>
+                <code>
+                // the setup function runs once when you press reset or power the board
+                int timer = 5000; //create variable - timer is 5 second
+                int delaytime = 100; //create variable - delay is 0.1 second
+                void setup() {
+                // use a for loop to initialize each pin as an output
+                    for (int thisPin = 13; thisPin >10; thisPin--) {
+                        pinMode(thisPin, OUTPUT);
+                    }
+                }
+                
+                // the loop function runs over and over again forever
+                void loop() {
+                // loop from ther highest to the lowest
+                    for (int thisPin = 13; thisPin >10; thisPin--) {
+                        digitalWrite(thisPin, HIGH);  // turn the LED on (HIGH the voltage level)
+                        digitalWrite(thisPin + 1, HIGH);  // turn the LED on (HIGH the voltage level)
+                        delay(timer);                 //wait for timer 5 second
+                        timer = timer - 2000;         //the timer's valuable will minus 2 second
+                        digitalWrite(thisPin, LOW);   // turn the LED off (LOW the voltage level)
+                        digitalWrite(thisPin + 1, LOW); // turn the LED off (LOW the voltage level)
+                        delay(delaytime);             //wait for delaytine which is 0.1 second
+                        if (thisPin == 11) {        //if thisPin is 11
+                            timer = 5000;             //set up timer to 5 second again
+                        }
+                    }
+                }
+                    
+                </code>
+            </pre>
     </body>
 </html>
