@@ -12,14 +12,114 @@
     <body> 
 
         <div class="header">
-            <h1>Example Student's Assignment 2!</h1>
+            <nav style="padding: 10px 5%;">
+                <ul>
+                  <li><a href="index.html" style="font-size: 30px; font-weight:bold;">Back</a></li>
+                </ul>
+            </nav>
+            <h1>Assignment 2 - LED Fade</h1>
             <p>
-            <img src="red-panda.jpg" width=400></a>
+            <img src="Fade_MOV_AdobeExpress.gif" style= "width: 500; aspect-ratio: 0.7;"></a>
+            </p>
+            <p style="padding: 10px 10%; font-size: 35px;">
+                Process:
+            </p>
+            <p style="padding: 10px 10%;">
+            I decide to use the red, yellow, green resistors (with 1.8V drop). 
+                <div class="cal">
+                    V = I * R <br>
+                    5V - 1.8V = 20mA * R <br>
+                    3.2V = 0.02A * R <br>
+                    R = 160Ω <br>
+                </div>
+            </p>
+            <p style="padding: 10px 10%;">
+            The minimum voltage requirement is 1.8V, 3.2V > 1.8V. So it's working. <br>
+            We need to find 3 resistors that close to 160Ω <br>
+            <br>
+            What if we choose 220Ω:
+            <div class="cal">
+                3.2V = I * 220Ω <br>
+                I = 3.2V/220Ω <br>
+                I = 0.0145A<br>
+                I = 14.5A<br>
+            </div>
+            <p style="padding: 10px 10%;">
+                The maximum current requirement is 30mA, 14.5mA smaller than 30mA. So 220Ω's resistors are working well. <br>
+                Therefore, I decide to use the <span style="color: crimson;">220Ω </span>resistors<br>
+                <br>
             </p>
             <p>
-            Here is all the documentation for assignment 2!
+                <img src="fade sch.JPG" width=400 style="aspect-ratio: 1.2;"></a>
             </p>
-        </div>
-        
+            <p>
+                <img src="Fade-photo.JPG" width=400 style="aspect-ratio: 0.8;"></a>
+            </p>
+            <p style="padding: 10px 10%; font-size: 35px;">
+                Code:
+            </p>
+            <p style="padding: 10px 10%;">
+                Set the pin 13, 11, 10 as output and pin 2 as input(pin 2 could use digitalRead).<br>
+                The <span style="color: rgb(126, 146, 0);">yellow</span> LED will light up when the user presses the button.<br>
+                Using the for loop, the <span style = "color: green">green</span> LED will light up and fade. Then, the <span style="color: crimson;">red</span> LED will light up and fade. <br>
+                Loop these steps
+                <br>
+            </p>
+            <pre>
+                <code>
+                    // the setup routine runs once when you press reset:
+                    void setup() {
+                      Serial.begin(9600);
+                      // initialize serial communication at 9600 bits per second:
+                      pinMode(13, OUTPUT);
+                      // make pin 13 as an output
+                      pinMode(11, OUTPUT);
+                      pinMode(10, OUTPUT);
+                      // make pin 10 as an output
+                      pinMode(2, INPUT);
+                      // make pin 2 as an input
+                    }
+                    
+                    // the loop routine runs over and over again forever:
+                    void loop() {
+                      digitalWrite(13, HIGH);
+                      //the pin 13 can be connected to power by writing “HIGH” at beginning
+                      int buttonState = digitalRead(2);
+                      // read the input pin:
+                      Serial.println(buttonState);
+                      // print out the state of the button:
+                      delay(200);  
+                      // delay 0.2s
+                      digitalWrite(10, LOW);
+                      //the pin 10 can be connected to ground by writing “LOW” at beginning
+                      digitalWrite(11, LOW);
+                      for (int i = 0; i < 25; i++) { //for loop: the i value generally increase from 0 to 25
+                        analogWrite(10, i);
+                        // set the brightness of pin 10 is value i
+                        delay(100);
+                        // delay 0.1s 
+                      }
+                      for (int i = 25; i >= 0; i--) {//for loop: the i value generally descrease from 25 to 0
+                        analogWrite(10, i);
+                        // set the brightness of pin 10 is value i
+                        delay(100);
+                        // delay 0.1s 
+                      }
+                      for (int i = 0; i < 25; i++) { //for loop: the i value generally increase from 0 to 25
+                        analogWrite(11, i);
+                        // set the brightness of pin 10 is value i
+                        delay(100);
+                        // delay 0.1s 
+                      }
+                      for (int i = 25; i >= 0; i--) {//for loop: the i value generally descrease from 25 to 0
+                        analogWrite(11, i);
+                        // set the brightness of pin 10 is value i
+                        delay(100);
+                        // delay 0.1s 
+                      }
+                      
+                    } 
+                </code>
+            </pre>
     </body>
 </html>
