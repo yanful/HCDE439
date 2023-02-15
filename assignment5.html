@@ -1,0 +1,83 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>Example Student's HCDE 439 Physical Computing Page!</title> 
+
+        <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+
+    </head> 
+    <body> 
+
+        <div class="header">
+            <nav style="padding: 10px 5%;">
+                <ul>
+                  <li><a href="index.html" style="font-size: 30px; font-weight:bold;">Back</a></li>
+                </ul>
+            </nav>
+            <h1>Assignment 5 - Higher voltage and transistors</h1>
+            <p>
+            <img src="transistor.gif" style= "width: 500; aspect-ratio: 1.2;"></a>
+            </p>
+            <p style="padding: 10px 10%; font-size: 35px;">
+                Process:
+            </p>
+            <p style="padding: 10px 10%;">
+                - I use the N-MOSFET transistor and external power supply<br>
+                - I use Ultrasonic Sensor an input sensor(Prof Nadya said I could use Ultrasonic Sensor without library) and use motor as output <br><br>
+                The transistor can handle a max current because: <br>
+                - I search online and find the datasheet about 3-6V DC Hobby Motor. The datasheet said "Current (6V): 0.13A / 1.3A Stalled". Our power supply is 12V, so I assume that the min current is "120MA * 2 = 260MA" and max current is 1.3A * 2 = 2.6A which is so much smaller than 32A (32A is transistor's max current). 
+            </p>
+            <p>
+                <img src="transistor1.JPG" width=450 style="aspect-ratio: 0.8;"></a>
+            </p>
+            <p style = "text-align: center;">(Output: Motor)</p>
+            <br>
+            <p>
+                <img src="transistor2.JPG" width=400 style="aspect-ratio: 0.8;"></a>
+            </p>
+            <p style = "text-align: center;">(Input: Ultrasonic Sensor)</p>
+            <br>
+            <p>
+                <img src="transistor.JPG" width=400 style="aspect-ratio: 1;"></a>
+            </p>
+            <p style="padding: 10px 10%; font-size: 35px;">
+                Code:
+            </p>
+            
+            <pre>
+                <code>
+                  int trigPin = 9; //set up trigPin as number 9
+                  int echoPin = 10; //set up echoPin as number 10
+                  long duration; //maximum range of an ultrasonic sensor
+                  int distance; //set up distance as integer
+                  void setup() {
+                    pinMode(trigPin, OUTPUT); //make trigPin as an output
+                    pinMode(echoPin, INPUT); //make echoPin as an input
+                    pinMode(3, OUTPUT); //make pin 3 as an output
+                    Serial.begin(9600); // initialize serial communication at 9600 bits per second:
+                  }
+                  void loop() {
+                    digitalWrite(trigPin, LOW); //the trigPin can be connected to power by writing “LOW” at beginning
+                    delay(2); //delay for 0.002s
+                    digitalWrite(trigPin, HIGH); //the trigPin can be connected to power by writing “High” at beginning
+                    delay(2); //delay for 0.002s
+                    digitalWrite(trigPin, LOW); //the trigPin can be connected to power by writing “LOW” at beginning
+                    duration = pulseIn(echoPin, HIGH); //measure the duration of a pulse received on a digital input pin connected to an ultrasonic sensor
+                    distance = duration * 0.034 / 2; //Calculating the distance
+                    Serial.print("Distance: "); //print the results to the Serial Monitor - start with "Distance: "
+                    Serial.println(distance); //print the results of distance
+                    if (distance > 20) { //if distance value is larger than 20
+                      analogWrite(3, 0); // set the value of pin 3 is 0
+                    } else { //else
+                      analogWrite(3, 50); // set the value of pin 3 is 50
+                    }
+                  }
+                        
+                    
+                </code>
+            </pre>
+    </body>
+</html>
