@@ -109,48 +109,48 @@
                           lcd.clear(); //clear the LCD screen
                           lcd.print("U cheater"); //display "U cheater" on LCD
                           constrain_range2 -= 30; //LED Strip minus 30, dim a little bit
-                          analogWrite(5, constrain_range2); // set the brightness of pin 9 is constrain_range2
+                          analogWrite(5, constrain_range2); // set the brightness of pin 5 is constrain_range2
                           delay(100); //delay for 0.1s
-                          analogWrite(5, 0); // set the brightness of pin 9 is 0
+                          analogWrite(5, 0); // set the brightness of pin 5 is 0
                           delay(100); //delay for 0.1s
                           analogWrite(5, constrain_range2);// set the brightness of pin 9 is constrain_range2
                           delay(100);//delay for 0.1s
-                          analogWrite(5, 0);// set the brightness of pin 9 is 0
+                          analogWrite(5, 0);// set the brightness of pin 5 is 0
                           delay(100);//delay for 0.1s
-                          analogWrite(5, constrain_range2);// set the brightness of pin 9 is constrain_range2
+                          analogWrite(5, constrain_range2);// set the brightness of pin 5 is constrain_range2
                           delay(100);//delay for 0.1s
                           lastDisplayTime = millis(); // set lastDisplayTime is to return the number of milliseconds that the sketch has been running
                         } else if (inByte == 'P') {  // if serial data is 'P'
                           lcd.clear(); //clear the LCD screen
                           lcd.print("Great job"); // display "Great job" on LCD
                           constrain_range2 += 30; //LED Strip plus 30, light up a little bit
-                          analogWrite(5, constrain_range2);// set the brightness of pin 9 is constrain_range2
+                          analogWrite(5, constrain_range2);// set the brightness of pin 5 is constrain_range2
                           delay(100);//delay for 0.1s
-                          analogWrite(5, 0); // set the brightness of pin 9 is 0
-                          delay(100);//delay for 0.1s
-                          analogWrite(5, constrain_range2);// set the brightness of pin 9 is constrain_range2
-                          delay(100);//delay for 0.1s
-                          analogWrite(5, 0); // set the brightness of pin 9 is 0
+                          analogWrite(5, 0); // set the brightness of pin 5 is 0
                           delay(100);//delay for 0.1s
                           analogWrite(5, constrain_range2);// set the brightness of pin 9 is constrain_range2
+                          delay(100);//delay for 0.1s
+                          analogWrite(5, 0); // set the brightness of pin 5 is 0
+                          delay(100);//delay for 0.1s
+                          analogWrite(5, constrain_range2);// set the brightness of pin 5 is constrain_range2
                           delay(100);//delay for 0.1s
                           lastDisplayTime = millis(); // set lastDisplayTime is to return the number of milliseconds that the sketch has been running
                         } else if (inByte == 'D') {  // if serial data is 'D'
                           lcd.clear(); //clear the LCD screen
                           lcd.print("Hh, U LOST"); //display "Hh, U LOST" on LCD
                           constrain_range2 = 0; // set the constrain_range2 is 0
-                          analogWrite(5, constrain_range2); // set the brightness of pin 9 is constrain_range2
+                          analogWrite(5, constrain_range2); // set the brightness of pin 5 is constrain_range2
                           lastDisplayTime = millis();// set lastDisplayTime is to return the number of milliseconds that the sketch has been running
                         } else if (inByte == 'E') {  // if serial data is 'E'
                           lcd.clear(); //clear the LCD screen
                           lcd.print("Excellent");//display "Excellent" on LCD
                           constrain_range2 = 200; // set the constrain_range2 is 200
-                          analogWrite(5, constrain_range2);// set the brightness of pin 9 is constrain_range2
+                          analogWrite(5, constrain_range2);// set the brightness of pin 5 is constrain_range2
                           lastDisplayTime = millis();// set lastDisplayTime is to return the number of milliseconds that the sketch has been running
                         } else if (inByte == 'W') {// if serial data is 'W'
                           lcd.clear();//clear the LCD screen
                           constrain_range2 = 100;// set the constrain_range2 is 100
-                          analogWrite(5, constrain_range2);// set the brightness of pin 9 is constrain_range2
+                          analogWrite(5, constrain_range2);// set the brightness of pin 5 is constrain_range2
                         } else { // else
                           lcd.clear(); //clear the LCD screen
                         }
